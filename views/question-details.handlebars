@@ -1,0 +1,119 @@
+<div class="row">
+<div class="col-md-9 col-sm-8 col-xs-9">
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>{{question.title}}</h3>
+    </div>
+    <div class="col-md-12">
+        <p>{{question.description}}</p>
+    </div>
+
+    <div class="col-md-8">
+        <span class="label label-default">Default Label</span>
+        <span class="label label-default">Default Label</span>
+        <span class="label label-default">Default Label</span>
+    </div>
+    <div class="col-md-4">
+        
+    </div>
+
+    <div class="col-md-12">
+        <br>
+        {{#each question.comments}}
+    
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{ commentBody}} -
+                <a href="">{{commentBy.name}}</a>
+                {{formatDate commentDate 'MMMM do YYYY'}}
+            </li>
+        </ul>
+    
+    
+        {{/each}}
+    </div>
+
+</div>
+
+
+<!--comment form-->
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            {{#if user}}
+            <a href="/users/comment">Add a comment</a>
+            {{else}}
+            <a href="/users/signin">Add a comment</a>
+            {{/if}}
+        </p>
+        
+         {{#if user}}
+        <form class="" action="/comment/{{question.id}}" method="post">
+            <div class="form-group">
+                <label>Add Comment</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="comment-user-box">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <span style="margin-top:-10px;">
+                            {{#if user }} {{user.name}} {{else}} Guest {{/if}}
+                        </span>
+                    </span>
+        
+                    <textarea class="form-control" id="comment" rows="2" name="comment"></textarea>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                </div>
+        
+            </div>
+        
+        </form>
+        {{/if}}
+    </div>
+</div>
+<!--end comment form-->
+
+
+
+{{#if user}}
+<div class="row">
+    <div class="col-md-12">
+        <form class="" action="/answer/{{question.id}}" method="post">
+            <div class="form-group">
+                <label>     </label>
+                <textarea class="form-control" id="answer" rows="6" name="answer"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Post your Answer</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{{/if}}
+
+    
+</div>
+<!-- sidebar-->
+<div class="col-md-3 col-sm-3 col-xs-3">
+    {{#if user}}
+    <a href="/account/question" class="btn btn-primary">Ask Question</a>
+    {{else}}
+    <a href="/users/signin" class="btn btn-primary">Ask Question</a>
+    {{/if}}
+
+    <br>
+    <br>
+    views : {{question.views}}
+    <br>
+    asked: {{formatDate question.created_at 'MMMM do YYYY'}}
+     
+
+</div>
+<!--end sidebar-->
+</div>
+

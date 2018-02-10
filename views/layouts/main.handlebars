@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Get Thing</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <!-- Static navbar -->
+    {{> _navbar}}
+    
+
+    <div class="container">
+
+         <div class="col-md-8 col-sm-8 col-md-offset-2 ">
+            {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+            {{/if}} {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+            {{/if}} {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{/if}}
+       </div>
+
+
+{{#ifCond currentURL '/'}} 
+    Home
+ {{else}} 
+ not Home
+{{/ifCond}}
+
+ 
+        {{{body}}}
+
+    </div>
+ 
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+</html>

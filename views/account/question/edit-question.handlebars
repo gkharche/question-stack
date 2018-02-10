@@ -1,0 +1,64 @@
+<div class="row">
+        
+    {{> _account-navbar }}
+
+    <div class="col-md-6 col-sm-6">
+
+        {{#each errors}}
+        <div class="alert alert-danger">
+            <p>{{text}}</p>
+        </div>
+        {{/each}}
+
+        <form  role="form" action="/account/question/{{question._id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT" />
+
+        <fieldset>
+                <legend>Ask Your Question</legend>
+
+                <div class="form-group">
+                    <label for="firstname">Title
+                        <span class="require">*</span>
+                    </label>
+                       <input type="text" class="form-control" id="title" name="title" value="{{ question.title }}">
+                    
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Descripion
+                        <span class="require">*</span>
+                    </label>
+                    <textarea class="form-control" id="description" rows="4" name="description">{{ question.description }}</textarea>
+
+                </div>
+                <div class="form-group">
+                    <label for="firstname" >Tags
+                        <span class="require">*</span>
+                    </label>
+                        <input type="text" class="form-control" id="tags" name="tags" value="{{ question.tags }}">
+                    
+                </div>
+            </fieldset>
+            <hr>
+            <div class="row">
+                <div class="">
+                    <button type="submit" class="btn btn-success">Ask Question</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="col-md-3 col-sm-3 pull-right">
+        <div class="form-info">
+            <h2>
+                <em>Important</em> Information</h2>
+            <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed sit nonumy nibh sed euismod ut laoreet dolore magna
+                aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip commodo quat.</p>
+
+            <p>Duis autem vel eum iriure at dolor vulputate velit esse vel molestie at dolore.</p>
+
+            <button type="button" class="btn btn-default">More details</button>
+        </div>
+    </div>
+
+</div>
